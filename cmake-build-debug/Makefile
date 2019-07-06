@@ -150,33 +150,6 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/450966_semaphores.dir/build.make CMakeFiles/450966_semaphores.dir/main.c.s
 .PHONY : main.c.s
 
-vc_vector.o: vc_vector.c.o
-
-.PHONY : vc_vector.o
-
-# target to build an object file
-vc_vector.c.o:
-	$(MAKE) -f CMakeFiles/450966_semaphores.dir/build.make CMakeFiles/450966_semaphores.dir/vc_vector.c.o
-.PHONY : vc_vector.c.o
-
-vc_vector.i: vc_vector.c.i
-
-.PHONY : vc_vector.i
-
-# target to preprocess a source file
-vc_vector.c.i:
-	$(MAKE) -f CMakeFiles/450966_semaphores.dir/build.make CMakeFiles/450966_semaphores.dir/vc_vector.c.i
-.PHONY : vc_vector.c.i
-
-vc_vector.s: vc_vector.c.s
-
-.PHONY : vc_vector.s
-
-# target to generate assembly for a file
-vc_vector.c.s:
-	$(MAKE) -f CMakeFiles/450966_semaphores.dir/build.make CMakeFiles/450966_semaphores.dir/vc_vector.c.s
-.PHONY : vc_vector.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +162,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... vc_vector.o"
-	@echo "... vc_vector.i"
-	@echo "... vc_vector.s"
 .PHONY : help
 
 
