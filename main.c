@@ -20,13 +20,13 @@ int rollerCoaster;
 bool ready = false;
 
 /*
- * Function: tsingleQueue
+ * Function: tSingleQueue
  * ----------------------------
  *   Produces people into the single person queue every 2 seconds.
  *   returns: void
  */
-void *tsingleQueue(void *ptr) {
-    printf(">  THREAD: tsingleQueue        launches!\n");
+void *tSingleQueue(void *ptr) {
+    printf(">  THREAD: tSingleQueue        launches!\n");
     while (true) {
         if (!ready) {
             sem_wait(&MutexPeople);
@@ -39,13 +39,13 @@ void *tsingleQueue(void *ptr) {
 }
 
 /*
- * Function: tgroupqueue
+ * Function: tGroupQueue
  * ----------------------------
  *   Produces people into the group person queue every 1 seconds.
  *   returns: void
  */
-void *tgroupqueue(void *ptr) {
-    printf(">  THREAD: tgroupqueue         launches!\n");
+void *tGroupQueue(void *ptr) {
+    printf(">  THREAD: tGroupQueue         launches!\n");
     while (true) {
         if (!ready) {
             sem_wait(&MutexPeople);
@@ -59,7 +59,7 @@ void *tgroupqueue(void *ptr) {
     pthread_exit(0);
 }
 
-bool fillRollercoaster(void) {
+bool fillRollerCoaster(void) {
     int *lastSingleQueue = vector_end(singleQueue);
     int *lastNormalQueue = vector_end(normalQueue);
 
@@ -99,20 +99,19 @@ bool fillRollercoaster(void) {
 }
 
 /*
- * Function: tgroupqueue
+ * Function: tGroupQueue
  * ----------------------------
  *   Takes people into the Roller/Dive coaster  every 5 seconds.
  *   It has one row where can be fitted 6 people.
  *   returns: void
  */
-void *trollercoaster(void *ptr) {
-    printf(">  THREAD: trollercoaster      launches!\n");
+void *tRollerCoaster(void *ptr) {
+    printf(">  THREAD: tRollerCoaster      launches!\n");
     int rideNr =0;
     while (true) {
         ready = false;
         bool filling = true;
         rollerCoaster = 6;
-
         printf("\n\n~~~~~~~~~~~Roller/Dive Coaster~~~~~~~~~~~\n");
         printf(    "         ");
         while (filling) {
@@ -120,9 +119,7 @@ void *trollercoaster(void *ptr) {
                 sleep(1);
                 sem_wait(&MutexRollercoaster);
             } else {
-
-                filling = fillRollercoaster();
-
+                filling = fillRollerCoaster();
                 if (rollerCoaster == 6) {
                     sem_post(&MutexPeople);
                     filling = true;
@@ -139,8 +136,8 @@ void *trollercoaster(void *ptr) {
         printf(">  number of free seats     left: %d\n", rollerCoaster);
         printf(">  number of groupQueue  tickets: %d\n", groupTotal);
         printf(">  number of singleQueue tickets: %d\n", singleTotal);
-        sem_post(&MutexPeople);
         printf("~~~~~~~~Rollercoaster departed!~~~~~~~~~~\n\n");
+        sem_post(&MutexPeople);
         ready = true;
         rideNr++;
         sleep(5);
@@ -169,9 +166,9 @@ int main() {
     sem_init(&MutexPeople, 0, 1);
     sem_init(&MutexRollercoaster, 0, 1);
 
-    pthread_create(&thread[0], NULL, &tgroupqueue, (void *) &targ[0]);
-    pthread_create(&thread[1], NULL, &tsingleQueue, (void *) &targ[1]);
-    pthread_create(&thread[2], NULL, &trollercoaster, (void *) &targ[2]);
+    pthread_create(&thread[0], NULL, &tGroupQueue, (void *) &targ[0]);
+    pthread_create(&thread[1], NULL, &tSingleQueue, (void *) &targ[1]);
+    pthread_create(&thread[2], NULL, &tRollerCoaster, (void *) &targ[2]);
 
     sem_post(&MutexPeople);
     sem_wait(&MutexRollercoaster);
