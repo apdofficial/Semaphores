@@ -13,15 +13,20 @@ sem_t MutexRollercoaster;
 int *singleQueue;
 int *normalQueue;
 
-int grouplTot = 0;
-int singleTot = 0;
+int groupTotal = 0;
+int singleTotal = 0;
 
 int rollerCoaster;
 bool ready = false;
 
-
+/*
+ * Function: tsingleQueue
+ * ----------------------------
+ *   Produces people into the single person queue every 2 seconds.
+ *   returns: void
+ */
 void *tsingleQueue(void *ptr) {
-    printf(">  THREAD: tsingleQueue   launches!\n");
+    printf(">  THREAD: tsingleQueue        launches!\n");
     while (true) {
         if (!ready) {
             sem_wait(&MutexPeople);
@@ -33,8 +38,14 @@ void *tsingleQueue(void *ptr) {
     pthread_exit(0);
 }
 
-void *tqueue(void *ptr) {
-    printf(">  THREAD: tqueue         launches!\n");
+/*
+ * Function: tgroupqueue
+ * ----------------------------
+ *   Produces people into the group person queue every 1 seconds.
+ *   returns: void
+ */
+void *tgroupqueue(void *ptr) {
+    printf(">  THREAD: tgroupqueue         launches!\n");
     while (true) {
         if (!ready) {
             sem_wait(&MutexPeople);
@@ -42,7 +53,7 @@ void *tqueue(void *ptr) {
         int groups = rand() % 2 + 2;
         vector_push_back(normalQueue, groups);
         sem_post(&MutexRollercoaster);
-        grouplTot += groups;
+        groupTotal += groups;
         sleep(1);
     }
     pthread_exit(0);
@@ -61,7 +72,7 @@ bool fillRollercoaster(void) {
             return true;
         } else if ((rollerCoaster - *lastNormalQueue) >= 0) {
             rollerCoaster -= *lastNormalQueue;
-            grouplTot -= *lastNormalQueue;
+            groupTotal -= *lastNormalQueue;
             printf("  |%d|", *lastNormalQueue);
             vector_pop_back(normalQueue);
             return true;
@@ -87,8 +98,15 @@ bool fillRollercoaster(void) {
     return false;
 }
 
+/*
+ * Function: tgroupqueue
+ * ----------------------------
+ *   Takes people into the Roller/Dive coaster  every 5 seconds.
+ *   It has one row where can be fitted 6 people.
+ *   returns: void
+ */
 void *trollercoaster(void *ptr) {
-    printf(">  THREAD: trollercoaster launches!\n");
+    printf(">  THREAD: trollercoaster      launches!\n");
     int rideNr =0;
     while (true) {
         ready = false;
@@ -114,13 +132,13 @@ void *trollercoaster(void *ptr) {
         if (singleQueue) {
             size_t i;
             for (i = 0; i < vector_size(singleQueue); ++i) {
-                singleTot += singleQueue[i];
+                singleTotal += singleQueue[i];
             }
         }
         printf("\n>  ride nr                      : %d\n",rideNr);
         printf(">  number of free seats     left: %d\n", rollerCoaster);
-        printf(">  number of groupQueue  tickets: %d\n", grouplTot);
-        printf(">  number of singleQueue tickets: %d\n", singleTot);
+        printf(">  number of groupQueue  tickets: %d\n", groupTotal);
+        printf(">  number of singleQueue tickets: %d\n", singleTotal);
         sem_post(&MutexPeople);
         printf("~~~~~~~~Rollercoaster departed!~~~~~~~~~~\n\n");
         ready = true;
@@ -130,6 +148,12 @@ void *trollercoaster(void *ptr) {
     pthread_exit(0);
 }
 
+/*
+ * Function: main
+ * ----------------------------
+ *   Initializes all the threads and runs the program
+ *   returns: 0
+ */
 int main() {
     printf("\n"
            "*************************************************\n"
@@ -145,7 +169,7 @@ int main() {
     sem_init(&MutexPeople, 0, 1);
     sem_init(&MutexRollercoaster, 0, 1);
 
-    pthread_create(&thread[0], NULL, &tqueue, (void *) &targ[0]);
+    pthread_create(&thread[0], NULL, &tgroupqueue, (void *) &targ[0]);
     pthread_create(&thread[1], NULL, &tsingleQueue, (void *) &targ[1]);
     pthread_create(&thread[2], NULL, &trollercoaster, (void *) &targ[2]);
 

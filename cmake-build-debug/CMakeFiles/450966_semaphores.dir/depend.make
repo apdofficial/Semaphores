@@ -4,6 +4,3 @@
 CMakeFiles/450966_semaphores.dir/main.c.o: ../main.c
 CMakeFiles/450966_semaphores.dir/main.c.o: ../vector.h
 
-CMakeFiles/450966_semaphores.dir/vc_vector.c.o: ../vc_vector.c
-CMakeFiles/450966_semaphores.dir/vc_vector.c.o: ../vc_vector.h
-
