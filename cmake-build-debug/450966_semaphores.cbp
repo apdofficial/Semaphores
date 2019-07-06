@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="450966_semaphores"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="450966_semaphores">
+				<Option output="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug/450966_semaphores" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 450966_semaphores"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="450966_semaphores/fast">
+				<Option output="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug/450966_semaphores" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 450966_semaphores/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/andrejpistek/Documents/Dokumenty/Saxion\ (Applied\ Science)/LED\ (ETI\ 2)/Quarter\ 4/OS\ 2/Assignment2/450966_semaphores/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/main.c">
+			<Option target="450966_semaphores"/>
+		</Unit>
+		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vc_vector.c">
+			<Option target="450966_semaphores"/>
+		</Unit>
+		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vc_vector.h">
+			<Option target="450966_semaphores"/>
+		</Unit>
+		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vector.h">
+			<Option target="450966_semaphores"/>
+		</Unit>
+		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

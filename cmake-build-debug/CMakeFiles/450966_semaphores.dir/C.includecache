@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/main.c
+stdio.h
+-
+pthread.h
+-
+semaphore.h
+-
+unistd.h
+-
+assert.h
+-
+stdlib.h
+-
+stdbool.h
+-
+vector.h
+/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vector.h
+
+/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vector.h
+stddef.h
+-
+stdlib.h
+-
+assert.h
+-
+
