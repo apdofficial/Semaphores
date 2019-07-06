@@ -3,4 +3,4 @@ project(450966_semaphores C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(450966_semaphores main.c vc_vector.c vc_vector.h vector.h)
+add_executable(450966_semaphores main.c vector.h)

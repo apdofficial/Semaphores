@@ -81,12 +81,6 @@
 		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/main.c">
 			<Option target="450966_semaphores"/>
 		</Unit>
-		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vc_vector.c">
-			<Option target="450966_semaphores"/>
-		</Unit>
-		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vc_vector.h">
-			<Option target="450966_semaphores"/>
-		</Unit>
 		<Unit filename="/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/vector.h">
 			<Option target="450966_semaphores"/>
 		</Unit>
