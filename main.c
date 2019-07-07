@@ -22,6 +22,8 @@ bool ready = false;
 /*
  * Function: tSingleQueue
  * ----------------------------
+ *   Producer
+ *
  *   Produces people into the single person queue every 2 seconds.
  *   returns: void
  */
@@ -41,7 +43,9 @@ void *tSingleQueue(void *ptr) {
 /*
  * Function: tGroupQueue
  * ----------------------------
- *   Produces people into the group person queue every 1 seconds.
+ *   Producer
+ *
+ *   Produces people into the group of 2/3 person queue every 1 seconds.
  *   returns: void
  */
 void *tGroupQueue(void *ptr) {
@@ -60,8 +64,8 @@ void *tGroupQueue(void *ptr) {
 }
 
 bool fillRollerCoaster(void) {
-    int *lastSingleQueue = vector_end(singleQueue);
-    int *lastNormalQueue = vector_end(normalQueue);
+    int *lastSingleQueue = vector_end(singleQueue, 1);
+    int *lastNormalQueue = vector_end(normalQueue, 1);
 
     if (*lastSingleQueue > 0 && *lastNormalQueue > 0) {
         if (vector_empty(normalQueue) == 0 && vector_empty(singleQueue) != 0 &&
@@ -70,7 +74,8 @@ bool fillRollerCoaster(void) {
             printf("  |%d|", *lastSingleQueue);
             vector_pop_back(singleQueue);
             return true;
-        } else if ((rollerCoaster - *lastNormalQueue) >= 0) {
+        }
+        if ((rollerCoaster - *lastNormalQueue) >= 0) {
             rollerCoaster -= *lastNormalQueue;
             groupTotal -= *lastNormalQueue;
             printf("  |%d|", *lastNormalQueue);
@@ -79,10 +84,23 @@ bool fillRollerCoaster(void) {
         } else if ((*lastNormalQueue == 3) && (rollerCoaster - 2 == 0)) {
             int *it;
             int i = 0;
-            for (it = vector_begin(singleQueue); it != vector_end(singleQueue); ++it) {
+            for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
                 if (*it == 2) {
                     rollerCoaster -= 2;
-                    printf("  |%d|",*lastNormalQueue);
+                    printf("  |%d|", *lastNormalQueue);
+                    vector_erase(normalQueue, i);
+                    return true;
+                }
+                ++i;
+            }
+        }
+        if (*lastNormalQueue == 2 && *vector_end(normalQueue, 2) == 2) {
+            int *it;
+            int i = 0;
+            for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
+                if (*it == 2) {
+                    rollerCoaster -= 2;
+                    printf("  |%d|", *lastNormalQueue);
                     vector_erase(normalQueue, i);
                     return true;
                 }
@@ -101,19 +119,21 @@ bool fillRollerCoaster(void) {
 /*
  * Function: tGroupQueue
  * ----------------------------
+ *   Consumer
+ *
  *   Takes people into the Roller/Dive coaster  every 5 seconds.
  *   It has one row where can be fitted 6 people.
  *   returns: void
  */
 void *tRollerCoaster(void *ptr) {
     printf(">  THREAD: tRollerCoaster      launches!\n");
-    int rideNr =0;
+    int rideNr = 0;
     while (true) {
         ready = false;
         bool filling = true;
         rollerCoaster = 6;
         printf("\n\n~~~~~~~~~~~Roller/Dive Coaster~~~~~~~~~~~\n");
-        printf(    "         ");
+        printf("         ");
         while (filling) {
             if (vector_size(singleQueue) == 0 && vector_size(normalQueue) == 0) {
                 sleep(1);
@@ -132,11 +152,11 @@ void *tRollerCoaster(void *ptr) {
                 singleTotal += singleQueue[i];
             }
         }
-        printf("\n>  ride nr                      : %d\n",rideNr);
+        printf("\n>  ride nr                      : %d\n", rideNr);
         printf(">  number of free seats     left: %d\n", rollerCoaster);
         printf(">  number of groupQueue  tickets: %d\n", groupTotal);
         printf(">  number of singleQueue tickets: %d\n", singleTotal);
-        printf("~~~~~~~~Rollercoaster departed!~~~~~~~~~~\n\n");
+        printf("~~~~~~~~Roller/Dive Coaster departed!~~~~~~~~\n\n");
         sem_post(&MutexPeople);
         ready = true;
         rideNr++;

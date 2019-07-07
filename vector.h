@@ -135,8 +135,8 @@ do { \
  * @param vec - the vector
  * @return a pointer to one past the last element (or NULL)
  */
-#define vector_end(vec) \
-	((vec) ? &((vec)[vector_size(vec)-1]) : NULL)
+#define vector_end(vec,i) \
+	((vec) ? &((vec)[vector_size(vec)-i]) : NULL)
 
 
 /**

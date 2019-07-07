@@ -1,4 +1,0 @@
-"/Users/andrejpistek/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.7479.33/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores"
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/andrejpistek/Documents/Dokumenty/Saxion (Applied Science)/LED (ETI 2)/Quarter 4/OS 2/Assignment2/450966_semaphores/cmake-build-debug
