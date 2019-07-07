@@ -64,53 +64,54 @@ void *tGroupQueue(void *ptr) {
 }
 
 bool fillRollerCoaster(void) {
-    int *lastSingleQueue = vector_end(singleQueue, 1);
-    int *lastNormalQueue = vector_end(normalQueue, 1);
-
-    if (*lastSingleQueue > 0 && *lastNormalQueue > 0) {
-        if (vector_empty(normalQueue) == 0 && vector_empty(singleQueue) != 0 &&
-            (rollerCoaster - *lastSingleQueue) >= 0) {
-            rollerCoaster -= *lastSingleQueue;
-            printf("  |%d|", *lastSingleQueue);
-            vector_pop_back(singleQueue);
-            return true;
-        }
-        if ((rollerCoaster - *lastNormalQueue) >= 0) {
-            rollerCoaster -= *lastNormalQueue;
-            groupTotal -= *lastNormalQueue;
-            printf("  |%d|", *lastNormalQueue);
-            vector_pop_back(normalQueue);
-            return true;
-        } else if ((*lastNormalQueue == 3) && (rollerCoaster - 2 == 0)) {
-            int *it;
-            int i = 0;
-            for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
-                if (*it == 2) {
-                    rollerCoaster -= 2;
-                    printf("  |%d|", *lastNormalQueue);
-                    vector_erase(normalQueue, i);
-                    return true;
-                }
-                ++i;
+    if(singleQueue && normalQueue) {
+        int *lastSingleQueue = vector_end(singleQueue, 1);
+        int *lastNormalQueue = vector_end(normalQueue, 1);
+        if (*lastSingleQueue > 0 && *lastNormalQueue > 0) {
+            if (vector_empty(normalQueue) == 0 && vector_empty(singleQueue) != 0 &&
+                (rollerCoaster - *lastSingleQueue) >= 0) {
+                rollerCoaster -= *lastSingleQueue;
+                printf("  |%d|", *lastSingleQueue);
+                vector_pop_back(singleQueue);
+                return true;
             }
-        }
-        if (*lastNormalQueue == 2 && *vector_end(normalQueue, 2) == 2) {
-            int *it;
-            int i = 0;
-            for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
-                if (*it == 2) {
-                    rollerCoaster -= 2;
-                    printf("  |%d|", *lastNormalQueue);
-                    vector_erase(normalQueue, i);
-                    return true;
+            if ((rollerCoaster - *lastNormalQueue) >= 0) {
+                rollerCoaster -= *lastNormalQueue;
+                groupTotal -= *lastNormalQueue;
+                printf("  |%d|", *lastNormalQueue);
+                vector_pop_back(normalQueue);
+                return true;
+            } else if ((*lastNormalQueue == 3) && (rollerCoaster - 2 == 0)) {
+                int *it;
+                int i = 0;
+                for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
+                    if (*it == 2) {
+                        rollerCoaster -= 2;
+                        printf("  |%d|", *lastNormalQueue);
+                        vector_erase(normalQueue, i);
+                        return true;
+                    }
+                    ++i;
                 }
-                ++i;
             }
-        } else if ((rollerCoaster - *lastSingleQueue) >= 0) {
-            rollerCoaster -= *lastSingleQueue;
-            printf("  |%d|", *lastSingleQueue);
-            vector_pop_back(singleQueue);
-            return true;
+            if (*lastNormalQueue == 2 && *vector_end(normalQueue, 2) == 2) {
+                int *it;
+                int i = 0;
+                for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
+                    if (*it == 2) {
+                        rollerCoaster -= 2;
+                        printf("  |%d|", *lastNormalQueue);
+                        vector_erase(normalQueue, i);
+                        return true;
+                    }
+                    ++i;
+                }
+            } else if ((rollerCoaster - *lastSingleQueue) >= 0) {
+                rollerCoaster -= *lastSingleQueue;
+                printf("  |%d|", *lastSingleQueue);
+                vector_pop_back(singleQueue);
+                return true;
+            }
         }
     }
     return false;
@@ -132,7 +133,7 @@ void *tRollerCoaster(void *ptr) {
         ready = false;
         bool filling = true;
         rollerCoaster = 6;
-        printf("\n\n~~~~~~~~~~~Roller/Dive Coaster~~~~~~~~~~~\n");
+        printf("\n\n~~~~~~~~~~~~~Roller/Dive Coaster~~~~~~~~~~~~~\n");
         printf("         ");
         while (filling) {
             if (vector_size(singleQueue) == 0 && vector_size(normalQueue) == 0) {
