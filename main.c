@@ -8,7 +8,7 @@
 #include "vector.h"
 
 #define MAX_PEOPLE_LIMIT    6
-#define ROLLERCOASTER_SPEED 2
+#define ROLLERCOASTER_SPEED 5
 #define SINGLEQUEUE_SPEED   2
 #define NORMALQUEUE_SPEED   1
 
@@ -46,6 +46,7 @@ void *tSingleQueue(void *ptr) {
         }
         vector_push_back(singleQueue, 1);
         sem_post(&MutexRollerCoaster);
+        singleTotal +=1;
         sleep(SINGLEQUEUE_SPEED);
     }
     pthread_exit(0);
@@ -88,7 +89,6 @@ bool fillRollerCoaster(void) {
         if (*lastSingleQueue > 0 && *lastNormalQueue > 0) {
 
             if (fireSingleRiderMode) {
-                printf("\nsingleRiderAdded fired!\n");
                 if ((rollerCoaster - *lastNormalQueue) >= 0) {
                     rollerCoaster -= *lastNormalQueue;
                     normalTotal -= *lastNormalQueue;
@@ -99,6 +99,7 @@ bool fillRollerCoaster(void) {
                     if ((rollerCoaster - *vector_end(singleQueue, 1)) >= 0) {
                         rollerCoaster -= *lastSingleQueue;
                         printf("  |%d|", *lastSingleQueue);
+                        singleTotal -= *lastSingleQueue;
                         vector_pop_back(singleQueue);
                         singleRiderAdded = true;
                         notFull= true;
@@ -115,6 +116,7 @@ bool fillRollerCoaster(void) {
                 (rollerCoaster - *lastSingleQueue) >= 0) {
                 rollerCoaster -= *lastSingleQueue;
                 printf("  |%d|", *lastSingleQueue);
+                singleTotal -= *lastSingleQueue;
                 vector_pop_back(singleQueue);
                 singleRiderAdded = true;
                 return true;
@@ -153,6 +155,7 @@ bool fillRollerCoaster(void) {
             if ((rollerCoaster - *lastSingleQueue) >= 0) {
                 rollerCoaster -= *lastSingleQueue;
                 printf("  |%d|", *lastSingleQueue);
+                singleTotal -= *lastSingleQueue;
                 vector_pop_back(singleQueue);
                 singleRiderAdded = true;
                 return true;
@@ -161,6 +164,7 @@ bool fillRollerCoaster(void) {
             if (vector_size(normalQueue) == 0 && (rollerCoaster - *lastSingleQueue) >= 0) {
                 rollerCoaster -= *lastSingleQueue;
                 printf("  |%d|", *lastSingleQueue);
+                singleTotal -= *lastSingleQueue;
                 vector_pop_back(singleQueue);
                 singleRiderAdded = true;
                 return true;
@@ -207,12 +211,7 @@ void *tRollerCoaster(void *ptr) {
             }
         }
 
-        if (singleQueue) {
-            size_t i;
-            for (i = 0; i < vector_size(singleQueue); ++i) {
-                singleTotal += singleQueue[i];
-            }
-        }
+
 
         singleRiderControl++;
 
