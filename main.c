@@ -1,6 +1,6 @@
 /*******************************************************************************
  *                                                                             *
- *   Program    : Semaphores                                                  *
+ *   Program    : Semaphores                                                   *
  *   Programmer : Andrej Pistek (450966)                                       *
  *   Date       : 05-July-2018                                                 *
  *                                                                             *
@@ -17,8 +17,8 @@
 
 #define MAX_PEOPLE_LIMIT    6
 #define ROLLERCOASTER_SPEED 1
-#define SINGLEQUEUE_SPEED   2
-#define NORMALQUEUE_SPEED   1
+#define SINGLEQUEUE_SPEED   5
+#define NORMALQUEUE_SPEED   5
 
 sem_t MutexPeople;
 sem_t MutexRollerCoaster;
@@ -64,7 +64,7 @@ void *tSingleQueue(void *ptr) {
  * ----------------------------
  *   Producer
  *
- *   Produces people into the group of 2/3 person queue every 1 seconds.
+ *   Produces people into the group of 2/3/4/5 person queue every 1 seconds.
  *   returns: void
  */
 void *tnormalQueue(void *ptr) {
@@ -72,7 +72,7 @@ void *tnormalQueue(void *ptr) {
     while (true) {
         if (!needPeople)
             sem_wait(&MutexPeople);
-        int groups = rand() % 2 + 2;
+        int groups = rand() % 2 + 2 + rand() % 2 + rand() % 2;
         vector_push_back(normalQueue, groups);
         sem_post(&MutexRollerCoaster);
         normalTotal += groups;
@@ -82,7 +82,7 @@ void *tnormalQueue(void *ptr) {
 }
 
 /*
- * Function: fillRollerCoaster
+ * Function: pop_Queue
  * ----------------------------
  *   Pops last person from the Queue type based of the type if 1 normalQueue if 0 singleQueue
  *   returns: true
@@ -105,7 +105,7 @@ bool pop_Queue(const int *lastItemInQueue, const int type) {
  * Function: fillRollerCoaster
  * ----------------------------
  *   Fills in the Roller/Dive coaster.
- *   returns: true if Roller/Dive coaster is not full, false otherwise
+ *   returns: true
  */
 bool fillRollerCoaster(void) {
     if (vector_empty(singleQueue) == 0 || vector_empty(normalQueue) == 0) {
