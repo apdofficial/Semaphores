@@ -8,8 +8,8 @@
 #include "vector.h"
 
 #define MAX_PEOPLE_LIMIT    6
-#define ROLLERCOASTER_SPEED 5
-#define SINGLEQUEUE_SPEED   2
+#define ROLLERCOASTER_SPEED 1
+#define SINGLEQUEUE_SPEED   1
 #define NORMALQUEUE_SPEED   1
 
 sem_t MutexPeople;
@@ -21,11 +21,11 @@ int *normalQueue;
 int normalTotal = 0;
 int singleTotal = 0;
 
-int rollerCoaster;
+int freeSeats;
 bool needPeople = false;
 
 int singleRiderControl = 0;
-bool singleRiderAdded = true;
+bool singleRiderAdded = false;
 
 bool notFull = true;
 bool fireSingleRiderMode = false;
@@ -46,7 +46,8 @@ void *tSingleQueue(void *ptr) {
         }
         vector_push_back(singleQueue, 1);
         sem_post(&MutexRollerCoaster);
-        singleTotal +=1;
+        singleTotal += 1;
+//        printf("added singleQueue\n");
         sleep(SINGLEQUEUE_SPEED);
     }
     pthread_exit(0);
@@ -70,9 +71,30 @@ void *tnormalQueue(void *ptr) {
         vector_push_back(normalQueue, groups);
         sem_post(&MutexRollerCoaster);
         normalTotal += groups;
+//        printf("added normalQueue\n");
         sleep(NORMALQUEUE_SPEED);
     }
     pthread_exit(0);
+}
+
+/*
+ * Function: fillRollerCoaster
+ * ----------------------------
+ *   Pops last person from the Queue type based of the type if 1 normalQueue if 0 singleQueue
+ *   returns: true
+ */
+bool pop_Queue(const int *lastItemInQueue, const int type) {
+    freeSeats -= *lastItemInQueue;
+    printf("  |%d|", *lastItemInQueue);
+    if (type == 1) {
+        vector_pop_back(normalQueue);
+        normalTotal -= *lastItemInQueue;
+    } else if (type == 2) {
+        vector_pop_back(singleQueue);
+        singleTotal -= *lastItemInQueue;
+        singleRiderAdded = true;
+    }
+    return true;
 }
 
 /*
@@ -82,96 +104,44 @@ void *tnormalQueue(void *ptr) {
  *   returns: true if Roller/Dive coaster is not full, false otherwise
  */
 bool fillRollerCoaster(void) {
-    if (singleQueue && normalQueue) {
-        int *lastSingleQueue = vector_end(singleQueue, 1);
-        int *lastNormalQueue = vector_end(normalQueue, 1);
-
-        if (*lastSingleQueue > 0 && *lastNormalQueue > 0) {
-
-            if (fireSingleRiderMode) {
-                if ((rollerCoaster - *lastNormalQueue) >= 0) {
-                    rollerCoaster -= *lastNormalQueue;
-                    normalTotal -= *lastNormalQueue;
-                    printf("  |%d|", *lastNormalQueue);
-                    vector_pop_back(normalQueue);
-                }
-                while (notFull) {
-                    if ((rollerCoaster - *vector_end(singleQueue, 1)) >= 0) {
-                        rollerCoaster -= *lastSingleQueue;
-                        printf("  |%d|", *lastSingleQueue);
-                        singleTotal -= *lastSingleQueue;
-                        vector_pop_back(singleQueue);
-                        singleRiderAdded = true;
-                        notFull= true;
-                    } else {
-                        notFull= false;
-                    }
-                }
-                singleRiderControl =0;
-                fireSingleRiderMode =false;
-                return true;
+    if (vector_empty(singleQueue) == 0 || vector_empty(normalQueue) == 0) {
+        if (fireSingleRiderMode) {
+            if ((freeSeats - *vector_end(normalQueue, 1)) >= 0)
+                pop_Queue(vector_end(normalQueue, 1),1);
+            while (freeSeats - *vector_end(singleQueue, 1) >= 0 && *vector_end(normalQueue, 1) > 0 ) {
+                pop_Queue(vector_end(singleQueue, 1),2);
             }
+            singleRiderControl = 0;
+            fireSingleRiderMode = false;
+            return true;
+        }
 
-            if (vector_empty(normalQueue) == 0 && vector_empty(singleQueue) != 0 &&
-                (rollerCoaster - *lastSingleQueue) >= 0) {
-                rollerCoaster -= *lastSingleQueue;
-                printf("  |%d|", *lastSingleQueue);
-                singleTotal -= *lastSingleQueue;
-                vector_pop_back(singleQueue);
-                singleRiderAdded = true;
-                return true;
-            }
-            if ((rollerCoaster - *lastNormalQueue) >= 0) {
-                rollerCoaster -= *lastNormalQueue;
-                normalTotal -= *lastNormalQueue;
-                printf("  |%d|", *lastNormalQueue);
-                vector_pop_back(normalQueue);
-                return true;
-            } else if ((*lastNormalQueue == 3) && (rollerCoaster - 2 == 0)) {
+        if(vector_empty(normalQueue) == 0) {
+            if ((freeSeats - *vector_end(normalQueue, 1)) >= 0) {
+                return pop_Queue(vector_end(normalQueue, 1), 1);
+            } else if (((*vector_end(normalQueue, 1) == 3) && (freeSeats - 2 == 0)) ||
+                       (*vector_end(normalQueue, 1) == 2 && *vector_end(normalQueue, 2) == 2)) {
                 int *it;
                 int i = 0;
-                for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
+                for (it = vector_begin(normalQueue); it != vector_end(normalQueue, 0); ++it) {
                     if (*it == 2) {
-                        rollerCoaster -= 2;
-                        printf("  |%d|", *lastNormalQueue);
+                        freeSeats -= 2;
+                        printf("  |%d|", *vector_end(normalQueue, 1));
                         vector_erase(normalQueue, i);
                         return true;
                     }
                     ++i;
                 }
-            } else if (*lastNormalQueue == 2 && *vector_end(normalQueue, 2) == 2) {
-                int *it;
-                int i = 0;
-                for (it = vector_begin(singleQueue); it != vector_end(singleQueue, 0); ++it) {
-                    if (*it == 2) {
-                        rollerCoaster -= 2;
-                        printf("  |%d|", *lastNormalQueue);
-                        vector_erase(normalQueue, i);
-                        notFull = true;
-                    }
-                    ++i;
-                }
             }
-            if ((rollerCoaster - *lastSingleQueue) >= 0) {
-                rollerCoaster -= *lastSingleQueue;
-                printf("  |%d|", *lastSingleQueue);
-                singleTotal -= *lastSingleQueue;
-                vector_pop_back(singleQueue);
-                singleRiderAdded = true;
-                return true;
-            }
-
-            if (vector_size(normalQueue) == 0 && (rollerCoaster - *lastSingleQueue) >= 0) {
-                rollerCoaster -= *lastSingleQueue;
-                printf("  |%d|", *lastSingleQueue);
-                singleTotal -= *lastSingleQueue;
-                vector_pop_back(singleQueue);
-                singleRiderAdded = true;
-                return true;
+        }
+        if(vector_empty(singleQueue) == 0) {
+            if ((vector_size(normalQueue) == 0 && (freeSeats - *vector_end(singleQueue, 1)) >= 0) ||
+                (freeSeats - *vector_end(singleQueue, 1)) >= 0) {
+                return pop_Queue(vector_end(singleQueue, 1), 2);
             }
         }
     }
-    return false;
+    return true;
 }
 
 /*
@@ -189,43 +159,40 @@ void *tRollerCoaster(void *ptr) {
     while (true) {
         needPeople = true;
         notFull = true;
-        rollerCoaster = 6;
+        freeSeats = MAX_PEOPLE_LIMIT;
         printf("\n\n~~~~~~~~~~~~~Roller/Dive Coaster~~~~~~~~~~~~~\n");
         printf("         ");
         while (notFull) {
-            if (vector_size(singleQueue) == 0 && vector_size(normalQueue) == 0 && rollerCoaster == 6) {
-                needPeople = true;
-                sem_post(&MutexPeople);
-                sleep(1);
-                sem_wait(&MutexRollerCoaster);
-            }
             notFull = fillRollerCoaster();
-
-            if (rollerCoaster == MAX_PEOPLE_LIMIT) {
-                notFull = true;
-                needPeople = true;
-                sem_post(&MutexPeople);
-            }
-            if ((vector_size(singleQueue) == 0 && vector_size(normalQueue) == 0) && rollerCoaster > 0) {
+            if (freeSeats == 0){
                 notFull = false;
+            } else {
+                if (vector_empty(singleQueue) != 0 && vector_empty(normalQueue) != 0 && freeSeats < 6) {
+//                    printf("released rolercoaster");
+                    notFull = false;
+                    needPeople = true;
+                    sem_post(&MutexPeople);
+                    usleep(500 * 1000);
+                }else if (vector_empty(singleQueue) != 0 && vector_empty(normalQueue) != 0 && freeSeats == MAX_PEOPLE_LIMIT) {
+                    needPeople = true;
+                    sem_post(&MutexPeople);
+                    usleep(500 * 1000);
+//                    printf("roler coaster mutexed\n");
+                    sem_wait(&MutexRollerCoaster);
+                }
+                usleep(50 * 1000);
             }
         }
-
-
-
         singleRiderControl++;
-
         if (singleRiderAdded) {
             singleRiderControl--;
             singleRiderAdded = false;
         }
-
         if (singleRiderControl > 2) {
-            fireSingleRiderMode =true;
+            fireSingleRiderMode = true;
         }
-
         printf("\n>  ride nr                      : %d\n", rideNr);
-        printf(">  number of free seats     left: %d\n", rollerCoaster);
+        printf(">  number of free seats     left: %d\n", freeSeats);
         printf(">  number of normalQueue tickets: %d\n", normalTotal);
         printf(">  number of singleQueue tickets: %d\n", singleTotal);
         printf("~~~~~~~~Roller/Dive Coaster departed!~~~~~~~~\n\n");
@@ -261,10 +228,6 @@ int main() {
     pthread_create(&thread[0], NULL, &tnormalQueue, (void *) &targ[0]);
     pthread_create(&thread[1], NULL, &tSingleQueue, (void *) &targ[1]);
     pthread_create(&thread[2], NULL, &tRollerCoaster, (void *) &targ[2]);
-
-    sem_post(&MutexPeople);
-    sem_wait(&MutexRollerCoaster);
-
 
     pthread_join(thread[0], NULL);
     pthread_join(thread[1], NULL);
