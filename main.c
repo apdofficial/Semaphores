@@ -1,3 +1,11 @@
+/*******************************************************************************
+ *                                                                             *
+ *   Program    : Semaphores                                                  *
+ *   Programmer : Andrej Pistek (450966)                                       *
+ *   Date       : 05-July-2018                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
 #include <stdio.h>
 #include <pthread.h>
 #include <semaphore.h>
@@ -9,7 +17,7 @@
 
 #define MAX_PEOPLE_LIMIT    6
 #define ROLLERCOASTER_SPEED 1
-#define SINGLEQUEUE_SPEED   1
+#define SINGLEQUEUE_SPEED   2
 #define NORMALQUEUE_SPEED   1
 
 sem_t MutexPeople;
@@ -41,13 +49,11 @@ bool fireSingleRiderMode = false;
 void *tSingleQueue(void *ptr) {
     printf(">  THREAD: tSingleQueue        launches!\n");
     while (true) {
-        if (!needPeople) {
+        if (!needPeople)
             sem_wait(&MutexPeople);
-        }
         vector_push_back(singleQueue, 1);
         sem_post(&MutexRollerCoaster);
         singleTotal += 1;
-//        printf("added singleQueue\n");
         sleep(SINGLEQUEUE_SPEED);
     }
     pthread_exit(0);
@@ -64,14 +70,12 @@ void *tSingleQueue(void *ptr) {
 void *tnormalQueue(void *ptr) {
     printf(">  THREAD: tnormalQueue        launches!\n");
     while (true) {
-        if (!needPeople) {
+        if (!needPeople)
             sem_wait(&MutexPeople);
-        }
         int groups = rand() % 2 + 2;
         vector_push_back(normalQueue, groups);
         sem_post(&MutexRollerCoaster);
         normalTotal += groups;
-//        printf("added normalQueue\n");
         sleep(NORMALQUEUE_SPEED);
     }
     pthread_exit(0);
@@ -121,9 +125,8 @@ bool fillRollerCoaster(void) {
                 return pop_Queue(vector_end(normalQueue, 1), 1);
             } else if (((*vector_end(normalQueue, 1) == 3) && (freeSeats - 2 == 0)) ||
                        (*vector_end(normalQueue, 1) == 2 && *vector_end(normalQueue, 2) == 2)) {
-                int *it;
                 int i = 0;
-                for (it = vector_begin(normalQueue); it != vector_end(normalQueue, 0); ++it) {
+                for (int *it = vector_begin(normalQueue); it != vector_end(normalQueue, 0); ++it) {
                     if (*it == 2) {
                         freeSeats -= 2;
                         printf("  |%d|", *vector_end(normalQueue, 1));
@@ -168,19 +171,17 @@ void *tRollerCoaster(void *ptr) {
                 notFull = false;
             } else {
                 if (vector_empty(singleQueue) != 0 && vector_empty(normalQueue) != 0 && freeSeats < 6) {
-//                    printf("released rolercoaster");
                     notFull = false;
                     needPeople = true;
                     sem_post(&MutexPeople);
-                    usleep(500 * 1000);
+                    usleep(50 * 1000);
                 }else if (vector_empty(singleQueue) != 0 && vector_empty(normalQueue) != 0 && freeSeats == MAX_PEOPLE_LIMIT) {
                     needPeople = true;
                     sem_post(&MutexPeople);
-                    usleep(500 * 1000);
-//                    printf("roler coaster mutexed\n");
+                    usleep(50 * 1000);
                     sem_wait(&MutexRollerCoaster);
                 }
-                usleep(50 * 1000);
+                usleep(5 * 1000);
             }
         }
         singleRiderControl++;
@@ -211,14 +212,6 @@ void *tRollerCoaster(void *ptr) {
  *   returns: 0
  */
 int main() {
-    printf("\n"
-           "*************************************************\n"
-           "* Wellcome to the Roller/Dive coaster which has *\n"
-           "* 6 seats and departs every 5 seconds.          *\n"
-           "* Student: Andrej Pištek                        *\n"
-           "* Student number: 450966                        *\n"
-           "*************************************************\n\n");
-
     int targ[3];
     pthread_t thread[3];
 

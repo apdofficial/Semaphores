@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dfe90ee9-fa56-42e5-a3a7-0d68d0cec746" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/450966_semaphores" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/450966_semaphores" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -32,16 +31,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+            <state relative-caret-position="363">
+              <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#571#738#0" />
-                <element signature="e#571#1131#0" />
-                <element signature="e#1133#1306#0" />
-                <element signature="e#1133#1746#0" />
                 <element signature="e#1748#1930#0" />
-                <element signature="e#1935#2290#0" />
                 <element signature="e#2292#2471#0" />
                 <element signature="e#4078#4293#0" />
                 <element signature="e#6116#6242#0" />
@@ -155,7 +149,7 @@
       <workItem from="1562585701247" duration="901000" />
       <workItem from="1563121100077" duration="567000" />
       <workItem from="1563136358699" duration="5982000" />
-      <workItem from="1563210386239" duration="2217000" />
+      <workItem from="1563210386239" duration="3992000" />
     </task>
     <task id="LOCAL-00001" summary="clean up">
       <created>1562446769239</created>
@@ -206,11 +200,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562500433731</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Mandatory done and working well">
+      <created>1563212679519</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563212679519</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55492000" />
+    <option name="totallyTimeSpent" value="57267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1005" extended-state="0" />
@@ -221,7 +222,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.31215772" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.31215772" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39868566" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -272,7 +273,8 @@
     <MESSAGE value="added support for 2+2+2 scenario" />
     <MESSAGE value="Finished with 2. extra task." />
     <MESSAGE value="Finished with 2. extra task. cleaned up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished with 2. extra task. cleaned up" />
+    <MESSAGE value="Mandatory done and working well" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mandatory done and working well" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vector.c" />
@@ -309,16 +311,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="14" lean-forward="true" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="363">
+          <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#571#738#0" />
-            <element signature="e#571#1131#0" />
-            <element signature="e#1133#1306#0" />
-            <element signature="e#1133#1746#0" />
             <element signature="e#1748#1930#0" />
-            <element signature="e#1935#2290#0" />
             <element signature="e#2292#2471#0" />
             <element signature="e#4078#4293#0" />
             <element signature="e#6116#6242#0" />
