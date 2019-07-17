@@ -13,6 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dfe90ee9-fa56-42e5-a3a7-0d68d0cec746" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/450966_semaphores" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/450966_semaphores" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -31,25 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#1748#1930#0" />
-                <element signature="e#2292#2471#0" />
-                <element signature="e#4078#4293#0" />
-                <element signature="e#6116#6242#0" />
-                <element signature="e#6116#7196#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vector.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+            <state relative-caret-position="718">
+              <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -61,6 +45,7 @@
       <find>pop</find>
       <find>find</find>
       <find>MutexRollercoaster</find>
+      <find>singleTotal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -81,10 +66,11 @@
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="487" />
     <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="1005" />
+    <option name="width" value="1029" />
+    <option name="height" value="759" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -149,7 +135,10 @@
       <workItem from="1562585701247" duration="901000" />
       <workItem from="1563121100077" duration="567000" />
       <workItem from="1563136358699" duration="5982000" />
-      <workItem from="1563210386239" duration="3992000" />
+      <workItem from="1563210386239" duration="4959000" />
+      <workItem from="1563254311857" duration="153000" />
+      <workItem from="1563347296854" duration="738000" />
+      <workItem from="1563348038068" duration="620000" />
     </task>
     <task id="LOCAL-00001" summary="clean up">
       <created>1562446769239</created>
@@ -207,14 +196,28 @@
       <option name="project" value="LOCAL" />
       <updated>1563212679519</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Clean up">
+      <created>1563215406968</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1563215406968</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Final code, implemented following extras: 1, 2">
+      <created>1563216166873</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1563216166873</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57267000" />
+    <option name="totallyTimeSpent" value="59745000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1005" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="1005" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20314735" />
@@ -222,14 +225,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.31215772" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.30996713" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39868566" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Profiler" order="8" weight="0.32968238" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.3242059" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3231106" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32968238" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.5170532" />
       <window_info anchor="bottom" id="Version Control" order="12" />
@@ -274,7 +277,9 @@
     <MESSAGE value="Finished with 2. extra task." />
     <MESSAGE value="Finished with 2. extra task. cleaned up" />
     <MESSAGE value="Mandatory done and working well" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mandatory done and working well" />
+    <MESSAGE value="Clean up" />
+    <MESSAGE value="Final code, implemented following extras: 1, 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final code, implemented following extras: 1, 2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vector.c" />
@@ -309,18 +314,11 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/sys/cdefs.h" />
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#1748#1930#0" />
-            <element signature="e#2292#2471#0" />
-            <element signature="e#4078#4293#0" />
-            <element signature="e#6116#6242#0" />
-            <element signature="e#6116#7196#0" />
-          </folding>
+        <state relative-caret-position="718">
+          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
         </state>
       </provider>
     </entry>
