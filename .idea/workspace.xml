@@ -32,8 +32,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+            <state relative-caret-position="70">
+              <caret line="200" column="77" lean-forward="true" selection-start-line="200" selection-start-column="77" selection-end-line="200" selection-end-column="77" />
+              <folding>
+                <element signature="e#0#566#0" />
+                <element signature="e#854#957#1" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,11 +70,10 @@
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="487" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1029" />
-    <option name="height" value="759" />
+    <option name="width" value="1440" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -138,7 +141,9 @@
       <workItem from="1563210386239" duration="4959000" />
       <workItem from="1563254311857" duration="153000" />
       <workItem from="1563347296854" duration="738000" />
-      <workItem from="1563348038068" duration="620000" />
+      <workItem from="1563348038068" duration="2145000" />
+      <workItem from="1563364687765" duration="199000" />
+      <workItem from="1563466861289" duration="2839000" />
     </task>
     <task id="LOCAL-00001" summary="clean up">
       <created>1562446769239</created>
@@ -210,29 +215,36 @@
       <option name="project" value="LOCAL" />
       <updated>1563216166873</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Aded struct">
+      <created>1563348698729</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1563348698729</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59745000" />
+    <option name="totallyTimeSpent" value="64308000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="1005" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20314735" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.30996713" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.3860846" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39868566" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Profiler" order="8" weight="0.32968238" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.3231106" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32196453" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32968238" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.5170532" />
       <window_info anchor="bottom" id="Version Control" order="12" />
@@ -279,7 +291,8 @@
     <MESSAGE value="Mandatory done and working well" />
     <MESSAGE value="Clean up" />
     <MESSAGE value="Final code, implemented following extras: 1, 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final code, implemented following extras: 1, 2" />
+    <MESSAGE value="Aded struct" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aded struct" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vector.c" />
@@ -317,8 +330,12 @@
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/sys/cdefs.h" />
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+        <state relative-caret-position="70">
+          <caret line="200" column="77" lean-forward="true" selection-start-line="200" selection-start-column="77" selection-end-line="200" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#566#0" />
+            <element signature="e#854#957#1" />
+          </folding>
         </state>
       </provider>
     </entry>
